@@ -1,8 +1,8 @@
-static String paramsOctaedro="Longitud=20";//Modificar
+static String paramsOctaedro="Longitud=50";//Modificar
 
 class Octaedro extends Figura{
   //Parametros por defecto por si acaso
-  int longitud=20;
+  int longitud=50;
   public Octaedro(ParamsFigura params){
     super(params);
     //Asignar los parámetros
@@ -16,6 +16,7 @@ class Octaedro extends Figura{
   }
   
   void creaFigura() {
+    longitud*=2;
     //Ajustes de visualización
     fill(conColor);
     if(!conStroke) noStroke();
