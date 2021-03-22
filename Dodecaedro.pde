@@ -1,8 +1,8 @@
-static String paramsDodecaedro="Longitud=40.0";
+static String paramsDodecaedro="Longitud=40";
 
 class Dodecaedro extends Figura{
   //Parametros por defecto por si acaso
-  float longitud=40.0;
+  float longitud=40;
   public Dodecaedro(ParamsFigura params){
     super(params);
     //Asignar los parámetros
@@ -12,14 +12,6 @@ class Dodecaedro extends Figura{
         this.longitud=Float.parseFloat(datos[1]);
       }
     }
-    //Doble dibujado porque la primera vez 
-    //que se dibuja empieza como con la longitud*2
-    //La siguiente vez debe ser una longitud distinta para que sea correcto
-    //Por eso se dibuja con Longitud-1 y luego con Longitud
-    //¿Por qué, quien sabe? xD
-    longitud--;
-    creaFigura();
-    longitud++;
     creaFigura();
   }
   

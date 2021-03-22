@@ -44,7 +44,7 @@ public void txtColor_change(GTextField source, GEvent event) { //_CODE_:txtColor
 } //_CODE_:txtColor:862990:
 
 public void txtParametros_change(GTextArea source, GEvent event) { //_CODE_:txtParametros:521962:
-  params.paramsFigura=source.getTextAsArray();
+  //params.paramsFigura=source.getTextAsArray();
 } //_CODE_:txtParametros:521962:
 
 public void btnFigura_click(GButton source, GEvent event) { //_CODE_:btnCrearFigura:772746:
@@ -52,6 +52,7 @@ public void btnFigura_click(GButton source, GEvent event) { //_CODE_:btnCrearFig
   sliderX.setValue(240.0);
   sliderY.setValue(180.0);
   sliderZ.setValue(180.0);
+  params.paramsFigura=txtParametros.getTextAsArray();
   params.conStroke=chkStroke.isSelected();
   creaFigura();
 } //_CODE_:btnCrearFigura:772746:
@@ -105,7 +106,7 @@ public void createGUI(){
   checkbox3 = new GCheckbox(this, 1500, 1500, 10, 10);
   checkbox3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   checkbox3.setOpaque(false);
-  listaFiguras = new GDropList(this, 0, 271, 160, 180, 8, 10);
+  listaFiguras = new GDropList(this, 0, 271, 160, 360, 16, 10);
   listaFiguras.setItems(loadStrings("list_407774"), 0);
   listaFiguras.addEventHandler(this, "listaFiguras_click");
   panel1 = new GPanel(this, 1500, 0, 10, 10, "Tab bar text");
