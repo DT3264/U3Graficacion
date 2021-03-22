@@ -28,7 +28,6 @@ public void sliderZ_change(GCustomSlider source, GEvent event) { //_CODE_:slider
 
 public void chkStroke_clicked(GCheckbox source, GEvent event) { //_CODE_:chkStroke:948418:
   params.conStroke=source.isSelected();
-  System.out.println("Stroke: " + source.isSelected());
 } //_CODE_:chkStroke:948418:
 
 public void chkFill_clicked(GCheckbox source, GEvent event) { //_CODE_:chkFill:535128:
@@ -124,7 +123,7 @@ public void createGUI(){
   lblColor.setText("Color");
   lblColor.setOpaque(false);
   txtParametros = new GTextArea(this, 0, 292, 160, 100, G4P.SCROLLBARS_NONE);
-  txtParametros.setText("r=100\nh=300");
+  txtParametros.setText("Radio=100\nAltura=300");
   txtParametros.setOpaque(true);
   txtParametros.addEventHandler(this, "txtParametros_change");
   btnCrearFigura = new GButton(this, 0, 393, 160, 30);

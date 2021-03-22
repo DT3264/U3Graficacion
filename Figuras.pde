@@ -8,7 +8,6 @@ int rotacionZ=180;
 
 void setup(){
   size(1250, 750, P3D);  
-  lights();
   fill(100, 200, 0);
   params=new ParamsFigura();
   creaFigura();
@@ -17,7 +16,8 @@ void setup(){
 
 void draw() {
   background(204);
-  fill(0);
+  lights();
+  directionalLight(128,128,128, 0, 1, 0);   // light from above
   lblRotX.setText("Rotacion X: " + rotacionX);
   lblRotY.setText("Rotacion Y: " + rotacionY);
   lblRotZ.setText("Rotacion Z: " + rotacionZ);
@@ -75,6 +75,6 @@ class ParamsFigura{
     conStroke=true;
     conFill=true;
     conColor=#A2B38C;
-    paramsFigura=new String[]{"r=100", "h=300"};
+    paramsFigura=paramsCilindro.split("\\n");
   }
 }

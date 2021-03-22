@@ -1,71 +1,71 @@
-static String paramsCilindro="r=100\nh=300";
+static String paramsCilindro="Radio=100\nAltura=300";
 
 class Cilindro extends Figura{
   //Parametros por defecto por si acaso
-  float r=100;
-  float h=300;
+  float radio=100;
+  float altura=300;
   public Cilindro(ParamsFigura params){
     super(params);
     //Asignar los parámetros
     for(String linea : params.paramsFigura){
       String[] datos=linea.split("=");
-      if(datos[0].charAt(0)=='r'){
-        this.r=Float.parseFloat(datos[1]);
+      if(datos[0].equals("Radio")){
+        this.radio=Float.parseFloat(datos[1]);
       }
-      if(datos[0].charAt(0)=='h'){
-        this.h=Float.parseFloat(datos[1]);
+      if(datos[0].equals("Altura")){
+        this.altura=Float.parseFloat(datos[1]);
       }
     }
     creaFigura();
   }
   
   void creaFigura() {
-    int sides=30;
-    PShape cylinder = createShape(GROUP);
+    int lados=30;
+    PShape cilindro = createShape(GROUP);
     //En el createShape inicial o en cada beginShape
     fill(conColor);
     if(!conStroke) noStroke();
     else stroke(0);
     if(!conFill) noFill();
     
-    float angle = 360 / sides;
-    float halfHeight = h / 2;
+    float angulo = 360 / lados;
+    float mediaAltura = altura / 2;
    
-    // draw top of the tube
-    PShape top = createShape();
-    top.beginShape();
+    // draw superior of the tube
+    PShape superior = createShape();
+    superior.beginShape();
     
-    for (int i = 0; i < sides; i++) {
-      float x = cos( radians( i * angle ) ) * r;
-      float y = sin( radians( i * angle ) ) * r;
-      top.vertex( x, y, -halfHeight);
+    for (int i = 0; i < lados; i++) {
+      float x = cos( radians( i * angulo ) ) * radio;
+      float y = sin( radians( i * angulo ) ) * radio;
+      superior.vertex( x, y, -mediaAltura);
     }
-    top.endShape(CLOSE);
-    cylinder.addChild(top);
+    superior.endShape(CLOSE);
+    cilindro.addChild(superior);
    
-    // draw bottom of the tube
-    PShape bottom = createShape();
-    bottom.beginShape();
-    for (int i = 0; i < sides; i++) {
-      float x = cos( radians( i * angle ) ) * r;
-      float y = sin( radians( i * angle ) ) * r;
-      bottom.vertex( x, y, halfHeight);
+    // draw inferior of the tube
+    PShape inferior = createShape();
+    inferior.beginShape();
+    for (int i = 0; i < lados; i++) {
+      float x = cos( radians( i * angulo ) ) * radio;
+      float y = sin( radians( i * angulo ) ) * radio;
+      inferior.vertex( x, y, mediaAltura);
     }
-    bottom.endShape(CLOSE);
-    cylinder.addChild(bottom);
+    inferior.endShape(CLOSE);
+    cilindro.addChild(inferior);
    
-    // draw sides
-    PShape middle = createShape();
-    middle.beginShape(TRIANGLE_STRIP);
-    for (int i = 0; i < sides + 1; i++) {
-      float x = cos( radians( i * angle ) ) * r;
-      float y = sin( radians( i * angle ) ) * r;
-      middle.vertex( x, y, halfHeight);
-      middle.vertex( x, y, -halfHeight);
+    // draw lados
+    PShape medio = createShape();
+    medio.beginShape(TRIANGLE_STRIP);
+    for (int i = 0; i < lados + 1; i++) {
+      float x = cos( radians( i * angulo ) ) * radio;
+      float y = sin( radians( i * angulo ) ) * radio;
+      medio.vertex( x, y, mediaAltura);
+      medio.vertex( x, y, -mediaAltura);
     }
-    middle.endShape(CLOSE);
-    cylinder.addChild(middle);
+    medio.endShape(CLOSE);
+    cilindro.addChild(medio);
    
-    shape=cylinder;
+    shape=cilindro;
   }
 }

@@ -1,19 +1,15 @@
-static String paramsTetraedro="r=100\nh=300";//Modificar
+static String paramsTetraedro="Longitud=100";//Modificar
 
 class Tetraedro extends Figura{
   //Parametros por defecto por si acaso
-  float r=100;
-  float h=300;
+  float longitud=100;
   public Tetraedro(ParamsFigura params){
     super(params);
     //Asignar los parámetros
     for(String linea : params.paramsFigura){
       String[] datos=linea.split("=");
-      if(datos[0].charAt(0)=='r'){
-        this.r=Float.parseFloat(datos[1]);
-      }
-      if(datos[0].charAt(0)=='h'){
-        this.h=Float.parseFloat(datos[1]);
+      if(datos[0].equals("Longitud")){
+        this.longitud=Float.parseFloat(datos[1]);
       }
     }
     creaFigura();
@@ -21,15 +17,24 @@ class Tetraedro extends Figura{
   
   void creaFigura() {
     
-    PShape cylinder = createShape();
-    //Ajusta parámetros en el createShape inicial o en cada beginShape, ejemplo en cilindro
+    PShape tetraedro;
+       
     fill(conColor);
     if(!conStroke) noStroke();
     else stroke(0);
     if(!conFill) noFill();
+    tetraedro=createShape();
+    tetraedro.beginShape(TRIANGLE_STRIP);
+    tetraedro.vertex( longitud,  longitud,  longitud); // v1
+    tetraedro.vertex(-longitud, -longitud,  longitud); // v2
+    tetraedro.vertex(-longitud,  longitud, -longitud); // v3
+    tetraedro.vertex( longitud, -longitud, -longitud); // v4
     
-    //Dibujar aquí
+    tetraedro.vertex( longitud,  longitud,  longitud); //v1 
+    tetraedro.vertex(-longitud, -longitud,  longitud); //v2 
     
-    shape=cylinder;
+    tetraedro.endShape();
+    
+    shape=tetraedro;
   }
 }
