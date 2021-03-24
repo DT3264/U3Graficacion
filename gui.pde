@@ -66,70 +66,103 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  lblRotX = new GLabel(this, 0, 0, 360, 20);
+  
+  int actY=0;
+  
+  actY+=20;
+  
+  GLabel lblRot = new GLabel(this, 0, actY, 360, 20);
+  actY+=20+1;
+  lblRot.setOpaque(false);
+  
+  lblRotX = new GLabel(this, 0, actY, 360, 20);
+  actY+=20+1;
   lblRotX.setText("Rotacion X:");
   lblRotX.setOpaque(false);
-  sliderX = new GCustomSlider(this, 0, 21, 360, 40, "grey_blue");
+  
+  sliderX = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  actY+=40+1;
   sliderX.setLimits(220, 0, 360);
   sliderX.setNbrTicks(360);
   sliderX.setNumberFormat(G4P.INTEGER, 0);
   sliderX.setOpaque(false);
   sliderX.addEventHandler(this, "sliderX_change");
-  lblRotY = new GLabel(this, 0, 62, 360, 20);
+  
+  lblRotY = new GLabel(this, 0, actY, 360, 20);
+  actY+=20+1;
   lblRotY.setText("Rotacion Y:");
   lblRotY.setOpaque(false);
-  sliderY = new GCustomSlider(this, 0, 83, 360, 40, "grey_blue");
+  
+  sliderY = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  actY+=40+1;
   sliderY.setLimits(180, 0, 360);
   sliderY.setNumberFormat(G4P.INTEGER, 0);
   sliderY.setOpaque(false);
   sliderY.addEventHandler(this, "sliderY_change");
-  lblRotZ = new GLabel(this, 0, 124, 360, 20);
+  
+  lblRotZ = new GLabel(this, 0, actY, 360, 20);
+  actY+=20+1;
   lblRotZ.setText("Rotacion Z:");
   lblRotZ.setOpaque(false);
-  sliderZ = new GCustomSlider(this, 0, 145, 360, 40, "grey_blue");
+  
+  sliderZ = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  actY+=40+1;
   sliderZ.setLimits(180, 0, 360);
   sliderZ.setNumberFormat(G4P.INTEGER, 0);
   sliderZ.setOpaque(false);
   sliderZ.addEventHandler(this, "sliderZ_change");
-  chkStroke = new GCheckbox(this, 0, 208, 160, 20);
+  
+  
+  actY+=80;
+  
+  chkStroke = new GCheckbox(this, 5, actY, 160, 20);
+  actY+=20+1;
   chkStroke.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   chkStroke.setText("Stroke");
   chkStroke.setOpaque(false);
   chkStroke.addEventHandler(this, "chkStroke_clicked");
   chkStroke.setSelected(true);
-  chkFill = new GCheckbox(this, 0, 229, 160, 20);
+  
+  chkFill = new GCheckbox(this, 5, actY, 160, 20);
+  actY+=20+1;
   chkFill.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   chkFill.setText("Fill");
   chkFill.setOpaque(false);
   chkFill.addEventHandler(this, "chkFill_clicked");
   chkFill.setSelected(true);
-  checkbox3 = new GCheckbox(this, 1500, 1500, 10, 10);
-  checkbox3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  checkbox3.setOpaque(false);
-  listaFiguras = new GDropList(this, 0, 271, 160, 360, 16, 10);
-  listaFiguras.setItems(loadStrings("list_407774"), 0);
-  listaFiguras.addEventHandler(this, "listaFiguras_click");
-  panel1 = new GPanel(this, 1500, 0, 10, 10, "Tab bar text");
-  panel1.setText("Tab bar text");
-  panel1.setOpaque(true);
-  lblParams = new GLabel(this, 0, 187, 160, 20);
-  lblParams.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  lblParams.setText("Parámetros de nueva figura");
-  lblParams.setOpaque(false);
-  txtColor = new GTextField(this, 0, 250, 160, 20, G4P.SCROLLBARS_NONE);
+  
+  txtColor = new GTextField(this, 5, actY, 160, 20, G4P.SCROLLBARS_NONE);
+  actY+=20+1;
   txtColor.setText("8ECD9A");
   txtColor.setOpaque(true);
   txtColor.addEventHandler(this, "txtColor_change");
-  lblColor = new GLabel(this, 1500, 1500, 150, 20);
-  lblColor.setText("Color");
-  lblColor.setOpaque(false);
-  txtParametros = new GTextArea(this, 0, 292, 160, 100, G4P.SCROLLBARS_NONE);
+  
+  listaFiguras = new GDropList(this, 5, actY, 160, 360, 16, 10);
+  actY+=20+1;
+  listaFiguras.setItems(loadStrings("list_407774"), 0);
+  listaFiguras.addEventHandler(this, "listaFiguras_click");
+  
+  txtParametros = new GTextArea(this, 5, actY, 160, 100, G4P.SCROLLBARS_NONE);
+  actY+=100+1;
   txtParametros.setText("Radio=100\nAltura=300");
   txtParametros.setOpaque(true);
   txtParametros.addEventHandler(this, "txtParametros_change");
-  btnCrearFigura = new GButton(this, 0, 393, 160, 30);
+  
+  
+  btnCrearFigura = new GButton(this, 5, actY, 160, 30);
+  actY+=30+1;
   btnCrearFigura.setText("Crear figura");
   btnCrearFigura.addEventHandler(this, "btnFigura_click");
+}
+void muestraSecciones(){
+  PFont font;
+  font = createFont("Courier New", 30);
+  textFont(font);
+  textAlign(LEFT);
+  fill(0);
+  text("ROTACIÓN", 0, 30);
+  text("CREACIÓN DE FIGURA", 0, 295);
+  fill(#A2B38C);
 }
 
 // Variable declarations 

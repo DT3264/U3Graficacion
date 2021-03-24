@@ -14,10 +14,12 @@ void setup(){
   createGUI();
 }
 
+
 void draw() {
   background(204);
-  lights();
-  directionalLight(128,128,128, 0, 1, 0);   // light from above
+  muestraSecciones();// Está al final de la clase gui
+  lights();// Luces en general
+  directionalLight(128,128,128, 0, 1, 0);// Luz desde arriba
   lblRotX.setText("Rotacion X: " + rotacionX);
   lblRotY.setText("Rotacion Y: " + rotacionY);
   lblRotZ.setText("Rotacion Z: " + rotacionZ);
