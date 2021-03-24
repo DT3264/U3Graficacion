@@ -71,16 +71,16 @@ public void createGUI(){
   
   actY+=20;
   
-  GLabel lblRot = new GLabel(this, 0, actY, 360, 20);
+  GLabel lblRot = new GLabel(this, 5, actY, 360, 20);
   actY+=20+1;
   lblRot.setOpaque(false);
   
-  lblRotX = new GLabel(this, 0, actY, 360, 20);
+  lblRotX = new GLabel(this, 5, actY, 360, 20);
   actY+=20+1;
   lblRotX.setText("Rotacion X:");
   lblRotX.setOpaque(false);
   
-  sliderX = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  sliderX = new GCustomSlider(this, 5, actY, 360, 40, "grey_blue");
   actY+=40+1;
   sliderX.setLimits(220, 0, 360);
   sliderX.setNbrTicks(360);
@@ -88,24 +88,24 @@ public void createGUI(){
   sliderX.setOpaque(false);
   sliderX.addEventHandler(this, "sliderX_change");
   
-  lblRotY = new GLabel(this, 0, actY, 360, 20);
+  lblRotY = new GLabel(this, 5, actY, 360, 20);
   actY+=20+1;
   lblRotY.setText("Rotacion Y:");
   lblRotY.setOpaque(false);
   
-  sliderY = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  sliderY = new GCustomSlider(this, 5, actY, 360, 40, "grey_blue");
   actY+=40+1;
   sliderY.setLimits(180, 0, 360);
   sliderY.setNumberFormat(G4P.INTEGER, 0);
   sliderY.setOpaque(false);
   sliderY.addEventHandler(this, "sliderY_change");
   
-  lblRotZ = new GLabel(this, 0, actY, 360, 20);
+  lblRotZ = new GLabel(this, 5, actY, 360, 20);
   actY+=20+1;
   lblRotZ.setText("Rotacion Z:");
   lblRotZ.setOpaque(false);
   
-  sliderZ = new GCustomSlider(this, 0, actY, 360, 40, "grey_blue");
+  sliderZ = new GCustomSlider(this, 5, actY, 360, 40, "grey_blue");
   actY+=40+1;
   sliderZ.setLimits(180, 0, 360);
   sliderZ.setNumberFormat(G4P.INTEGER, 0);
@@ -155,14 +155,33 @@ public void createGUI(){
   btnCrearFigura.addEventHandler(this, "btnFigura_click");
 }
 void muestraSecciones(){
-  PFont font;
-  font = createFont("Courier New", 30);
+  //Pinta límites de secciones
+  strokeWeight(2);
+  //Sección de rotación
+  limite(2, 2, 365, 230, #A2B38C);
+  //Sección de nueva figura
+  limite(2, 260, 365, 530, #A2B3CC);
+  
+  //Pinta titulos de secciones
+  PFont font = createFont("Courier New", 30);
   textFont(font);
   textAlign(LEFT);
   fill(0);
-  text("ROTACIÓN", 0, 30);
-  text("CREACIÓN DE FIGURA", 0, 295);
+  text("ROTACIÓN", 5, 30);
+  text("CREACIÓN DE FIGURA", 5, 295);
+  
+  //Reestablece el fill original
   fill(#A2B38C);
+}
+
+void limite(int x1, int y1, int x2, int y2, color fondo){
+  beginShape();
+  fill(fondo);
+  vertex(x1,y1);
+  vertex(x2, y1);
+  vertex(x2, y2);
+  vertex(x1, y2);
+  endShape(CLOSE);
 }
 
 // Variable declarations 
