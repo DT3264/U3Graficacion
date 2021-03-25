@@ -28,6 +28,10 @@ class PiramideCuadrada extends Figura{
     else stroke(0);
     if(!conFill) noFill();
     
+    piramide.translate(0, h/2, b/2);
+    piramide.rotateY(radians(45));
+    piramide.rotateX(radians(-60));
+    
     //Dibujar aquí
    
     PShape p = createShape();

@@ -29,6 +29,11 @@ class PrismaPentagonal extends Figura{
     if(!conFill) noFill();
     
     float hip=sqrt((l*l)-((l/2)*(l/2)));
+    
+    
+    penta.translate(0, l, hip);
+    penta.rotateX(radians(-60));
+    
     PShape p = createShape();
     PShape p2 = createShape();
     PShape p3 = createShape();

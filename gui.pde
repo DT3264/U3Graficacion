@@ -14,6 +14,10 @@
  * =========================================================
  */
 
+int rotacionX=240;
+int rotacionY=180;
+int rotacionZ=180;
+
 public void sliderX_change(GCustomSlider source, GEvent event) { //_CODE_:sliderX:780867:
   rotacionX=source.getValueI();
 } //_CODE_:sliderX:780867:

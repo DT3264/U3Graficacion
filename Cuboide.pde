@@ -28,6 +28,8 @@ class Cuboide extends Figura{
     else stroke(0);
     if(!conFill) noFill();
     
+    cuboide.translate(0, l/2, a/2);
+    
     //Dibujar aquí
     PShape cub = createShape();
     PShape cub2 = createShape();

@@ -29,6 +29,10 @@ class PrismaHexagonal extends Figura{
     if(!conFill) noFill();
     float hip=sqrt((l*l)-((l/2)*(l/2)));
     
+    
+    hexa.translate(0, l, hip);
+    hexa.rotateX(radians(-60));
+    
     PShape he = createShape();
     PShape he2 = createShape();
     PShape he3 = createShape();
