@@ -6,9 +6,11 @@ int rotacionX=240;
 int rotacionY=180;
 int rotacionZ=180;
 float scale=1.0;
-
+public void settings() {
+  size(1250, 750, "processing.opengl.PGraphics3D");
+}
 void setup(){
-  size(1250, 750, P3D);  
+  //size(1250, 750, P3D);  
   fill(100, 200, 0);
   params=new ParamsFigura();
   creaFigura();

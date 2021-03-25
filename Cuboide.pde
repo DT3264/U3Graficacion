@@ -1,19 +1,19 @@
-static String paramsCuboide="r=100\nh=300";//Modificar
+static String paramsCuboide="lado=200\nancho=50";//Modificar
 
 class Cuboide extends Figura{
   //Parametros por defecto por si acaso
-  float r=100;
-  float h=300;
+  float l=200;
+  float a=50;
   public Cuboide(ParamsFigura params){
     super(params);
     //Asignar los parámetros
     for(String linea : params.paramsFigura){
       String[] datos=linea.split("=");
-      if(datos[0].charAt(0)=='r'){
-        this.r=Float.parseFloat(datos[1]);
+      if(datos[0].equals("lado")){
+        this.l=Float.parseFloat(datos[1]);
       }
-      if(datos[0].charAt(0)=='h'){
-        this.h=Float.parseFloat(datos[1]);
+      if(datos[0].equals("ancho")){
+        this.a=Float.parseFloat(datos[1]);
       }
     }
     creaFigura();
@@ -21,7 +21,7 @@ class Cuboide extends Figura{
   
   void creaFigura() {
     
-    PShape cylinder = createShape();
+    PShape cuboide = createShape(GROUP);
     //Ajusta parámetros en el createShape inicial o en cada beginShape, ejemplo en cilindro
     fill(conColor);
     if(!conStroke) noStroke();
@@ -29,7 +29,52 @@ class Cuboide extends Figura{
     if(!conFill) noFill();
     
     //Dibujar aquí
+    PShape cub = createShape();
+    PShape cub2 = createShape();
+    PShape cub3 = createShape();
+    PShape cub4 = createShape();
+    PShape cub5 = createShape();
+    PShape cub6 = createShape();
+    cub.beginShape();
+    //Derecha
+    cub.vertex(l/2, 0, 0);
+    cub.vertex(l/2, -l, 0);
+    cub.vertex(l/2, -l, -a);
+    cub.vertex(l/2, 0, -a);
+    cub.vertex(l/2, 0, 0);
+    cub.endShape();
+    cuboide.addChild(cub);
+     //Atras
+    cub2.beginShape();
+    cub2.vertex(l/2, 0, -a);
+    cub2.vertex(l/2, -l, -a);
+    cub2.vertex(-l/2, -l, -a);
+    cub2.vertex(-l/2, 0, -a);
+    cub2.vertex(l/2, 0, -a);
+    cub2.endShape();
+     cuboide.addChild(cub2);
     
-    shape=cylinder;
+    cub3.beginShape();
+    //Izquierda
+    cub3.vertex(-l/2, 0, -a);
+    cub3.vertex(-l/2, -l, -a);
+    cub3.vertex(-l/2, -l, 0);
+    cub3.vertex(-l/2, 0, 0);
+    cub3.vertex(-l/2, 0, -a);
+     cub3.endShape();
+    cuboide.addChild(cub3);
+     
+     cub4.beginShape();
+     //Enfrente
+     cub4.vertex(-l/2, 0, 0);
+     cub4.vertex(-l/2, -l, 0);
+     cub4.vertex(l/2, -l, 0);
+     cub4.vertex(l/2, 0, 0);
+     cub4.vertex(-l/2, 0, 0);
+     cub4.endShape();
+    cuboide.addChild(cub4);
+     
+   
+    shape=cuboide;
   }
 }

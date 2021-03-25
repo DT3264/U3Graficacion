@@ -1,27 +1,21 @@
-static String paramsEsfera="r=100\nh=300";//Modificar
+static String paramsEsfera="Radio=100";
 
 class Esfera extends Figura{
   //Parametros por defecto por si acaso
   float r=100;
-  float h=300;
   public Esfera(ParamsFigura params){
     super(params);
     //Asignar los parámetros
     for(String linea : params.paramsFigura){
       String[] datos=linea.split("=");
-      if(datos[0].charAt(0)=='r'){
+      if(datos[0].equals("Radio")){
         this.r=Float.parseFloat(datos[1]);
-      }
-      if(datos[0].charAt(0)=='h'){
-        this.h=Float.parseFloat(datos[1]);
       }
     }
     creaFigura();
   }
   
   void creaFigura() {
-    
-    PShape cylinder = createShape();
     //Ajusta parámetros en el createShape inicial o en cada beginShape, ejemplo en cilindro
     fill(conColor);
     if(!conStroke) noStroke();
@@ -29,7 +23,8 @@ class Esfera extends Figura{
     if(!conFill) noFill();
     
     //Dibujar aquí
-    
-    shape=cylinder;
+    //sphereDetail(4, 40);
+    PShape esferaD = createShape(SPHERE, r);
+    shape=esferaD;
   }
 }
