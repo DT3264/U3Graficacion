@@ -5,6 +5,7 @@ ParamsFigura params;
 int rotacionX=240;
 int rotacionY=180;
 int rotacionZ=180;
+float scale=1.0;
 
 void setup(){
   size(1250, 750, P3D);  
@@ -63,6 +64,45 @@ void creaFigura(){
   if(params.idFigura==13) figura=new PrismaTriangular(params);
   if(params.idFigura==14) figura=new Tetraedro(params);
   if(params.idFigura==15) figura=new Toro(params);
+}
+void keyPressed(){
+  if(key=='w' || key=='s' || key=='a' || key=='d'){
+    //Escala temporal
+    float newScale=0.0;
+    if(key=='w'){//UP
+      params.idFigura--;
+      if(params.idFigura<0) params.idFigura=15;
+    }
+    else if(key=='s'){//DOWN
+      params.idFigura++;
+      if(params.idFigura>15) params.idFigura=0;
+    }
+    else if(key=='a'){//LEFT
+      scale-=0.1;
+      if(scale<0.1) scale+=0.1;
+      newScale=scale;
+    }
+    else if(key=='d'){//RIGHT
+      scale+=0.1;
+      if(scale>2.0) scale-=0.1;
+      newScale=scale;
+    }
+    if(key=='w' || key=='s'){
+      //Ajusta el índice seleccionado de la lista de figuras
+      listaFiguras.setSelected(params.idFigura);
+      //Actualiza el textbox con los parámetros de la figura
+      actualizaTXTParametros();
+    }
+    //Crea figura
+    btnCreaFiguraClick();
+    
+    //Actualiza escala de ser necesario
+    if(newScale!=0.0){
+      //Reestablece y ajusta la escala global si se actualizó
+      scale=newScale;
+      figura.shape.scale(scale);
+    }
+  }
 }
 
 class ParamsFigura{
