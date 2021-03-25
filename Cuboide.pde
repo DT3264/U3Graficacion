@@ -35,6 +35,7 @@ class Cuboide extends Figura{
     PShape cub4 = createShape();
     PShape cub5 = createShape();
     PShape cub6 = createShape();
+    
     cub.beginShape();
     //Derecha
     cub.vertex(l/2, 0, 0);
@@ -72,7 +73,28 @@ class Cuboide extends Figura{
      cub4.vertex(l/2, 0, 0);
      cub4.vertex(-l/2, 0, 0);
      cub4.endShape();
-    cuboide.addChild(cub4);
+     cuboide.addChild(cub4);
+     
+     cub5.beginShape();
+     //Abajo
+     cub5.vertex(-l/2, 0, 0);
+     cub5.vertex(-l/2, 0, -a);
+     cub5.vertex(l/2, 0, -a);
+     cub5.vertex(l/2, 0, 0);
+     cub5.vertex(-l/2, 0, 0);
+     cub5.endShape();
+     cuboide.addChild(cub5);
+     
+      cub6.beginShape();
+     //Arriba
+     cub6.vertex(-l/2, -l, 0);
+     cub6.vertex(-l/2, -l, -a);
+     cub6.vertex(l/2, -l, -a);
+     cub6.vertex(l/2, -l, 0);
+     cub6.vertex(-l/2, -l, 0);
+     cub6.endShape();
+     cuboide.addChild(cub6);
+     
      
    
     shape=cuboide;
